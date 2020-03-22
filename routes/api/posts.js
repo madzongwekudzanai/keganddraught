@@ -88,13 +88,13 @@ router.get("/latest", async (req, res) => {
 });
 
 // @route    GET api/posts/footer
-// @desc     Get 2 latest posts
+// @desc     Get 4 latest posts
 // @access   Public
-router.get("/footer", async (req, res) => {
+router.get("/four", async (req, res) => {
   try {
     const latest = await Post.find()
       .sort({ date: -1 })
-      .limit(2);
+      .limit(4);
     res.json(latest);
   } catch (err) {
     console.error(err.message);
