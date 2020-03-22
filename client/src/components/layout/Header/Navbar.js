@@ -170,13 +170,6 @@ const Navbar = () => {
                       </a>
                     </li>
                   </ul>
-                  <a
-                    href="/"
-                    className="mean-expand"
-                    style={{ fontSize: "18px" }}
-                  >
-                    +
-                  </a>
                 </li>
                 <li className="nav-item">
                   <a href="/" className="nav-link dropdown-toggle">
@@ -194,13 +187,6 @@ const Navbar = () => {
                       </a>
                     </li>
                   </ul>
-                  <a
-                    href="/"
-                    className="mean-expand"
-                    style={{ fontSize: "18px" }}
-                  >
-                    +
-                  </a>
                 </li>
                 <li className="nav-item">
                   <a href="/" className="nav-link">
@@ -223,13 +209,6 @@ const Navbar = () => {
                       </a>
                     </li>
                   </ul>
-                  <a
-                    href="/"
-                    className="mean-expand"
-                    style={{ fontSize: "18px" }}
-                  >
-                    +
-                  </a>
                 </li>
                 <li className="nav-item">
                   <a href="/" className="nav-link">
@@ -252,13 +231,6 @@ const Navbar = () => {
                       </a>
                     </li>
                   </ul>
-                  <a
-                    href="/"
-                    className="mean-expand"
-                    style={{ fontSize: "18px" }}
-                  >
-                    +
-                  </a>
                 </li>
                 <li className="nav-item">
                   <a href="/" className="nav-link">
