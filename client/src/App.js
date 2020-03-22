@@ -1,4 +1,5 @@
-import React, { Fragment } from "react";
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./animate.css";
 import "./flaticon.css";
 import "./nice-select.css";
@@ -6,30 +7,31 @@ import "./magnific-popup.css";
 import "./mainmenu.css";
 import "./App.css";
 import "./responsive.css";
-import Navbar from "./components/layout/Header/Navbar";
-import Banner from "./components/layout/Header/Banner";
-import Welcome from "./components/layout/Welcome";
-import Service from "./components/layout/Service";
-import Choose from "./components/layout/Choose";
-import Pricing from "./components/layout/Pricing";
-import Subscribe from "./components/layout/Subscribe";
-import LatestBlog from "./components/blog/LatestBlog";
-import Footer from "./components/layout/Footer";
+import Routes from "./components/routing/Routes";
 
-function App() {
-  return (
-    <Fragment>
-      <Navbar />
-      <Banner />
-      <Welcome />
-      <Service />
-      <Choose />
-      <Pricing />
-      <Subscribe />
-      <LatestBlog />
-      <Footer />
-    </Fragment>
-  );
+// Redux
+import { Provider } from "react-redux";
+import store from "./store";
+import { loadUser } from "./actions/auth";
+import { setAuthToken } from "./utils/setAuthToken";
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
 }
+
+const App = () => {
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
+  return (
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route component={Routes} />
+        </Switch>
+      </Router>
+    </Provider>
+  );
+};
 
 export default App;

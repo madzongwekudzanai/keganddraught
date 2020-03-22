@@ -1,7 +1,8 @@
 import {
   GET_POSTS,
   GET_THREE_POSTS,
-  GET_TWO_POSTS,
+  GET_FOUR_POSTS,
+  GET_SEARCH_POSTS,
   GET_POST,
   POST_ERROR,
   UPDATE_LIKES,
@@ -14,7 +15,8 @@ import {
 const initialState = {
   posts: [],
   post: null,
-  twoPosts: [],
+  searchPosts: [],
+  fourPosts: [],
   threePosts: [],
   category: [],
   loading: true,
@@ -31,16 +33,22 @@ export default function(state = initialState, action) {
         posts: payload,
         loading: false
       };
+    case GET_SEARCH_POSTS:
+      return {
+        ...state,
+        searchPosts: payload,
+        loading: false
+      };
     case GET_POST:
       return {
         ...state,
         post: payload,
         loading: false
       };
-    case GET_TWO_POSTS:
+    case GET_FOUR_POSTS:
       return {
         ...state,
-        twoPosts: payload,
+        fourPosts: payload,
         loading: false
       };
     case GET_THREE_POSTS:

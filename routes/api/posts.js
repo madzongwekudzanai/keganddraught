@@ -305,20 +305,4 @@ router.post("/search", async (req, res) => {
   }
 });
 
-// @route    GET api/posts/category/:cat
-// @desc     Find Category
-// @access   Public
-router.get("/category/:cat", async (req, res) => {
-  try {
-    const results = await Post.find({
-      category: req.params.cat
-    });
-
-    res.json(results);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Server Error");
-  }
-});
-
 module.exports = router;

@@ -3,7 +3,8 @@ import { setAlert } from "./alert";
 import {
   GET_POSTS,
   GET_THREE_POSTS,
-  GET_TWO_POSTS,
+  GET_FOUR_POSTS,
+  GET_SEARCH_POSTS,
   GET_POST,
   POST_ERROR,
   UPDATE_LIKES,
@@ -19,6 +20,22 @@ export const getPosts = () => async dispatch => {
     const res = await axios.get("/api/posts");
     dispatch({
       type: GET_POSTS,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+// Search posts
+export const searchPosts = () => async dispatch => {
+  try {
+    const res = await axios.get("/api/posts/search");
+    dispatch({
+      type: GET_SEARCH_POSTS,
       payload: res.data
     });
   } catch (err) {
@@ -105,12 +122,12 @@ export const addPost = formData => async dispatch => {
   }
 };
 
-// Get two post
-export const getTwoPost = () => async dispatch => {
+// Get four post
+export const getFourPost = () => async dispatch => {
   try {
-    const res = await axios.get("/api/posts/footer");
+    const res = await axios.get("/api/posts/four");
     dispatch({
-      type: GET_TWO_POSTS,
+      type: GET_FOUR_POSTS,
       payload: res.data
     });
   } catch (err) {
