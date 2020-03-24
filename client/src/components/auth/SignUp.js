@@ -1,101 +1,139 @@
-import React from "react";
+import React, { useState, Fragment } from "react";
+import Social from "./Social";
+import PropTypes from "prop-types";
+import axios from "axios";
+import { Link, Redirect } from "react-router-dom";
+import { setAlert } from "../../actions/alert";
+import { connect } from "react-redux";
 
-const SignUp = () => {
+const SignUp = ({ setAlert, auth }) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: ""
+  });
+  const { name, email, password } = formData;
+  const onChange = e => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const onSubmit = async e => {
+    e.preventDefault();
+    try {
+      await axios.post("/api/users", {
+        name,
+        email,
+        password
+      });
+      setAlert("Account created, please verify your email", "success", 10000);
+      setFormData({
+        ...formData,
+        name: "",
+        email: "",
+        password: ""
+      });
+    } catch (err) {
+      setAlert("Invalid credentials", "danger");
+    }
+  };
   return (
-    <section className="sign-up-area">
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-lg-6 col-md-6 p-0">
-            <div className="sign-up-bg"></div>
-          </div>
-          <div className="col-lg-6 col-md-6 p-0">
-            <div className="sign-up-form">
-              <h3>Create your Account</h3>
-              <form>
-                <div className="row">
-                  <div className="col-lg-6 col-sm-6">
-                    <div className="form-group">
-                      <label>First Name</label>
-                      <input
-                        type="text"
-                        placeholder="First Name"
-                        className="form-control"
-                      />
+    <Fragment>
+      {auth.isAuthenticated ? (
+        <Redirect to="/" />
+      ) : (
+        <section className="sign-up-area">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-lg-6 col-md-6 p-0">
+                <div className="sign-up-bg"></div>
+              </div>
+              <div className="col-lg-6 col-md-6 p-0">
+                <div className="sign-up-form">
+                  <h3>Create your Account</h3>
+                  <form
+                    onSubmit={e => {
+                      onSubmit(e);
+                    }}
+                  >
+                    <div className="row">
+                      <div className="col-lg-12">
+                        <div className="form-group">
+                          <label>Your Name</label>
+                          <input
+                            type="text"
+                            name="name"
+                            value={name}
+                            onChange={e => {
+                              onChange(e);
+                            }}
+                            placeholder="Your Name"
+                            className="form-control"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div className="col-lg-12">
+                        <div className="form-group">
+                          <label>Email</label>
+                          <input
+                            type="email"
+                            name="email"
+                            value={email}
+                            onChange={e => {
+                              onChange(e);
+                            }}
+                            placeholder="Email Address"
+                            className="form-control"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div className="col-lg-12">
+                        <div className="form-group">
+                          <label>Password</label>
+                          <input
+                            type="password"
+                            name="password"
+                            value={password}
+                            onChange={e => {
+                              onChange(e);
+                            }}
+                            placeholder="Password"
+                            className="form-control"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div className="col-md-6 offset-md-3">
+                        <button type="submit" className="btn default-btn">
+                          Sign Up
+                        </button>
+                      </div>
+                      <div className="col-lg-12">
+                        <p>
+                          Already a registered user?
+                          <Link to="/login">Login!</Link>
+                        </p>
+                      </div>
+                      <Social />
                     </div>
-                  </div>
-                  <div className="col-lg-6 col-sm-6">
-                    <div className="form-group">
-                      <label>Last Name</label>
-                      <input
-                        type="text"
-                        placeholder="Last Name"
-                        className="form-control"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-lg-12">
-                    <div className="form-group">
-                      <label>Email</label>
-                      <input
-                        type="email"
-                        placeholder="Email Address"
-                        className="form-control"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-lg-12">
-                    <div className="form-group">
-                      <label>Password</label>
-                      <input
-                        type="password"
-                        placeholder="Password"
-                        className="form-control"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-6 offset-md-3">
-                    <button type="submit" className="btn default-btn">
-                      Sign Up
-                    </button>
-                  </div>
-                  <div className="col-lg-12">
-                    <p>
-                      Already a registered user?
-                      <a href="/">Login!</a>
-                    </p>
-                  </div>
-                  <div className="col-lg-12">
-                    <ul className="social-list">
-                      <li>
-                        <a href="/">
-                          <i className="fab fa-facebook-f"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/">
-                          <i className="fab fa-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/">
-                          <i className="fa fa-google-plus"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/">
-                          <i className="fa fa-linkedin"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                  </form>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
+      )}
+    </Fragment>
   );
 };
 
-export default SignUp;
+SignUp.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, { setAlert })(SignUp);

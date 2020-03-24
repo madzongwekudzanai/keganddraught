@@ -25,5 +25,17 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <script src="https://kit.fontawesome.com/3114b91a04.js" crossorigin="anonymous"></script>
+    <script>
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function() {scrollFunction()};
+      
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 588) {
+          document.getElementById("myBtn").classList.add("active");
+        } else {
+          document.getElementById("myBtn").classList.remove("active");
+        }
+      }
+          </script>
   </body>
 </html>

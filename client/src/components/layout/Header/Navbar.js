@@ -1,152 +1,150 @@
-import React from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import gianoLogo from "../coverimages/giano-logo.png";
+import { Link, withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { logout } from "../../../actions/auth";
 
-const Navbar = () => {
+const Navbar = ({ history, logout, auth: { isAuthenticated, loading } }) => {
+  const [expandNav, setExpandNav] = useState(false);
+  const toggleNavbar = () => {
+    setExpandNav(!expandNav);
+  };
+  const [activeLink, setActiveLink] = useState(window.location.pathname);
+  useEffect(() => {
+    history.listen((location, action) => {
+      // location is an object like window.location
+
+      setActiveLink(`${location.pathname}`);
+    });
+    console.log(activeLink);
+  }, []);
   return (
     <div className="navbar-area fixed-top">
       <div className="mobile-nav mean-container">
         <div className="mean-bar">
-          <a
-            href="/"
+          <Link
+            onClick={toggleNavbar}
+            to="/"
             className="meanmenu-reveal"
             style={{ right: "0", left: "auto" }}
           >
             <span></span>
             <span></span>
             <span></span>
-          </a>
+          </Link>
           <nav className="mean-nav">
-            <ul className="navbar-nav ml-auto" style={{ display: "none" }}>
+            <ul
+              className="navbar-nav ml-auto"
+              style={{ display: expandNav ? "flex" : "none" }}
+            >
               <li className="nav-item">
-                <a href="/" className="nav-link dropdown-toggle active">
+                <Link
+                  to="/"
+                  onClick={toggleNavbar}
+                  className={`nav-link ${activeLink === "/" ? "active" : null}`}
+                >
                   Home
-                </a>
-                <ul className="dropdown-menu" style={{ display: "none" }}>
-                  <li className="nav-item">
-                    <a href="/" className="nav-link">
-                      Home One
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a href="/" className="nav-link">
-                      Home Two
-                    </a>
-                  </li>
-                </ul>
-                <a
-                  href="/"
-                  className="mean-expand"
-                  style={{ fontSize: "18px" }}
-                >
-                  +
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="/" className="nav-link dropdown-toggle">
-                  Pages
-                </a>
-                <ul className="dropdown-menu" style={{ display: "none" }}>
-                  <li className="nav-item">
-                    <a href="/" className="nav-link">
-                      Home One
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a href="/" className="nav-link">
-                      Home Two
-                    </a>
-                  </li>
-                </ul>
-                <a
-                  href="/"
-                  className="mean-expand"
-                  style={{ fontSize: "18px" }}
+                <Link
+                  to="/about"
+                  onClick={toggleNavbar}
+                  className={`nav-link ${
+                    activeLink === "/about" ? "active" : null
+                  }`}
                 >
-                  +
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="/" className="nav-link">
                   About Us
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="/" className="nav-link dropdown-toggle">
-                  Shop
-                </a>
-                <ul className="dropdown-menu" style={{ display: "none" }}>
-                  <li className="nav-item">
-                    <a href="/" className="nav-link">
-                      Home One
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a href="/" className="nav-link">
-                      Home Two
-                    </a>
-                  </li>
-                </ul>
-                <a
-                  href="/"
-                  className="mean-expand"
-                  style={{ fontSize: "18px" }}
+                <Link
+                  to="/blog"
+                  onClick={toggleNavbar}
+                  className={`nav-link ${
+                    activeLink === "/blog" ? "active" : null
+                  }`}
                 >
-                  +
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="/" className="nav-link">
-                  Event
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="/" className="nav-link dropdown-toggle">
                   News
-                </a>
-                <ul className="dropdown-menu" style={{ display: "none" }}>
-                  <li className="nav-item">
-                    <a href="/" className="nav-link">
-                      Home One
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a href="/" className="nav-link">
-                      Home Two
-                    </a>
-                  </li>
-                </ul>
-                <a
-                  href="/"
-                  className="mean-expand"
-                  style={{ fontSize: "18px" }}
-                >
-                  +
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="/" className="nav-link">
+                <Link
+                  to="/contact"
+                  onClick={toggleNavbar}
+                  className={`nav-link ${
+                    activeLink === "/contact" ? "active" : null
+                  }`}
+                >
                   Contact
-                </a>
+                </Link>
               </li>
+              <li className="nav-item">
+                <Link to="/contact" className="nav-link">
+                  Hire
+                </Link>
+              </li>
+              {!loading && (
+                <Fragment>
+                  {isAuthenticated ? (
+                    <li className="nav-item">
+                      <Link
+                        className="nav-link"
+                        onClick={() => {
+                          logout();
+                        }}
+                      >
+                        Logout
+                      </Link>
+                    </li>
+                  ) : (
+                    <Fragment>
+                      <li className="nav-item">
+                        <Link
+                          to="/login"
+                          onClick={toggleNavbar}
+                          className={`nav-link ${
+                            activeLink === "/login" ? "active" : null
+                          }`}
+                        >
+                          Log In
+                        </Link>
+                      </li>
+                      <li className="nav-item">
+                        <Link
+                          to="/register"
+                          onClick={toggleNavbar}
+                          className={`nav-link ${
+                            activeLink === "/register" ? "active" : null
+                          }`}
+                        >
+                          Sign Up
+                        </Link>
+                      </li>
+                    </Fragment>
+                  )}
+                </Fragment>
+              )}
               <li className="nav-item contact-number">
-                <a href="/" className="nav-link">
+                <Link to="/contact" className="nav-link">
                   <i className="fa fa-phone"></i>
                   +254-789-417
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
         </div>
-        <a href="/" className="logo">
+        <Link to="/" className="logo">
           <img src={gianoLogo} alt="Keg & Draught Logo" />
-        </a>
+        </Link>
       </div>
       <div className="main-nav">
-        <nav className="navbar navbar-expand-md navbar-light">
+        <nav className="navbar navbar-expand-md navbar-light is-sticky">
           <div className="container">
-            <a href="/" className="navbar-brand">
+            <Link to="/" className="navbar-brand">
               <img src={gianoLogo} alt="Keg & Draught Logo" />
-            </a>
+            </Link>
             <div className="mean-push"></div>
             <div
               className="collapse navbar-collapse mean-menu"
@@ -155,93 +153,100 @@ const Navbar = () => {
             >
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <a href="/" className="nav-link dropdown-toggle active">
+                  <Link
+                    to="/"
+                    onClick={toggleNavbar}
+                    className={`nav-link ${
+                      activeLink === "/" ? "active" : null
+                    }`}
+                  >
                     Home
-                  </a>
-                  <ul className="dropdown-menu" style={{ display: "none" }}>
-                    <li className="nav-item">
-                      <a href="/" className="nav-link">
-                        Home One
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a href="/" className="nav-link">
-                        Home Two
-                      </a>
-                    </li>
-                  </ul>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a href="/" className="nav-link dropdown-toggle">
-                    Pages
-                  </a>
-                  <ul className="dropdown-menu" style={{ display: "none" }}>
-                    <li className="nav-item">
-                      <a href="/" className="nav-link">
-                        Home One
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a href="/" className="nav-link">
-                        Home Two
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="nav-item">
-                  <a href="/" className="nav-link">
+                  <Link
+                    to="/about"
+                    onClick={toggleNavbar}
+                    className={`nav-link ${
+                      activeLink === "/about" ? "active" : null
+                    }`}
+                  >
                     About Us
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a href="/" className="nav-link dropdown-toggle">
-                    Shop
-                  </a>
-                  <ul className="dropdown-menu" style={{ display: "none" }}>
-                    <li className="nav-item">
-                      <a href="/" className="nav-link">
-                        Home One
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a href="/" className="nav-link">
-                        Home Two
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="nav-item">
-                  <a href="/" className="nav-link">
-                    Event
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="/" className="nav-link dropdown-toggle">
+                  <Link
+                    to="/blog"
+                    onClick={toggleNavbar}
+                    className={`nav-link ${
+                      activeLink === "/blog" ? "active" : null
+                    }`}
+                  >
                     News
-                  </a>
-                  <ul className="dropdown-menu" style={{ display: "none" }}>
-                    <li className="nav-item">
-                      <a href="/" className="nav-link">
-                        Home One
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a href="/" className="nav-link">
-                        Home Two
-                      </a>
-                    </li>
-                  </ul>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a href="/" className="nav-link">
+                  <Link
+                    to="/contact"
+                    onClick={toggleNavbar}
+                    className={`nav-link ${
+                      activeLink === "/contact" ? "active" : null
+                    }`}
+                  >
                     Contact
-                  </a>
+                  </Link>
                 </li>
+                <li className="nav-item">
+                  <Link to="/contact" className="nav-link">
+                    Hire
+                  </Link>
+                </li>
+                {!loading && (
+                  <Fragment>
+                    {isAuthenticated ? (
+                      <li className="nav-item">
+                        <Link
+                          className="nav-link"
+                          onClick={() => {
+                            logout();
+                          }}
+                        >
+                          Logout
+                        </Link>
+                      </li>
+                    ) : (
+                      <Fragment>
+                        <li className="nav-item">
+                          <Link
+                            to="/login"
+                            onClick={toggleNavbar}
+                            className={`nav-link ${
+                              activeLink === "/login" ? "active" : null
+                            }`}
+                          >
+                            Log In
+                          </Link>
+                        </li>
+                        <li className="nav-item">
+                          <Link
+                            to="/register"
+                            onClick={toggleNavbar}
+                            className={`nav-link ${
+                              activeLink === "/register" ? "active" : null
+                            }`}
+                          >
+                            Sign Up
+                          </Link>
+                        </li>
+                      </Fragment>
+                    )}
+                  </Fragment>
+                )}
                 <li className="nav-item contact-number">
-                  <a href="/" className="nav-link">
+                  <Link to="/contact" className="nav-link">
                     <i className="fa fa-phone"></i>
                     +254-789-417
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -252,4 +257,13 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+Navbar.propTypes = {
+  auth: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired
+};
+
+export default connect(mapStateToProps, { logout })(withRouter(Navbar));

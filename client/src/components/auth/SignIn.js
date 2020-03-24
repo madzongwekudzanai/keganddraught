@@ -1,6 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
+import Social from "./Social";
+import { Link, Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { login } from "../../actions/auth";
 
-const SignIn = () => {
+const SignIn = ({ auth: { isAuthenticated }, login }) => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: ""
+  });
+  const { email, password } = formData;
+  const onChange = e => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const onSubmit = e => {
+    e.preventDefault();
+    login(email, password);
+  };
+
+  if (isAuthenticated) {
+    return <Redirect to="/" />;
+  }
+
   return (
     <section className="sign-up-area">
       <div className="container-fluid">
@@ -11,12 +33,22 @@ const SignIn = () => {
           <div className="col-lg-6 col-md-6 p-0">
             <div className="sign-up-form">
               <h3>Log In</h3>
-              <form>
+              <form
+                onSubmit={e => {
+                  onSubmit(e);
+                }}
+              >
                 <div className="row">
                   <div className="col-lg-12">
                     <div className="form-group">
                       <label>Email</label>
                       <input
+                        name="email"
+                        value={email}
+                        required
+                        onChange={e => {
+                          onChange(e);
+                        }}
                         type="email"
                         placeholder="Email Address"
                         className="form-control"
@@ -27,6 +59,12 @@ const SignIn = () => {
                     <div className="form-group">
                       <label>Password</label>
                       <input
+                        name="password"
+                        value={password}
+                        required
+                        onChange={e => {
+                          onChange(e);
+                        }}
                         type="password"
                         placeholder="Password"
                         className="form-control"
@@ -39,32 +77,11 @@ const SignIn = () => {
                     </button>
                   </div>
                   <div className="col-lg-12">
-                    <p>Forgot your password?</p>
+                    <p>
+                      <Link to="reset">Forgot your password?</Link>
+                    </p>
                   </div>
-                  <div className="col-lg-12">
-                    <ul className="social-list">
-                      <li>
-                        <a href="/">
-                          <i className="fab fa-facebook-f"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/">
-                          <i className="fab fa-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/">
-                          <i className="fa fa-google-plus"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/">
-                          <i className="fa fa-linkedin"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                  <Social />
                 </div>
               </form>
             </div>
@@ -75,4 +92,13 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+SignIn.propTypes = {
+  auth: PropTypes.object.isRequired,
+  login: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, { login })(SignIn);
