@@ -1,5 +1,6 @@
 import React from "react";
 import errImg from "../layout/coverimages/404.jpg";
+import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
@@ -9,10 +10,10 @@ const NotFound = () => {
           <img src={errImg} alt="404" />
           <h3>Oops! Page Not Found</h3>
           <p>The page you were looking for could not be found.</p>
-          <a href="/" className="default-btn">
+          <Link to="/" className="default-btn">
             Return Home page
             <i className="flaticon-right-arrow"></i>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

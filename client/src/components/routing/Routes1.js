@@ -15,7 +15,7 @@ const Routes1 = () => {
         <Route exact component={About} path="/about" />
         <Route exact component={ContactUs} path="/contact" />
         <Route exact component={Blog} path="/blog" />
-        <Route exact component={BlogDetail} path="/blogDetail" />
+        <Route exact component={BlogDetail} path="/blog/:id" />
         <Route component={NotFound} />
       </Switch>
     </Fragment>

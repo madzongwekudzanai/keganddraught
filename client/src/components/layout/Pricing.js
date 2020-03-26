@@ -1,6 +1,7 @@
 import React from "react";
 import est from "./coverimages/est.png";
 import estate from "./coverimages/estate.png";
+import { Link } from "react-router-dom";
 
 const Pricing = () => {
   return (
@@ -62,9 +63,9 @@ const Pricing = () => {
                   </div>
                 </div>
                 <div className="estate-btn">
-                  <a href="/" className="default-btn">
+                  <Link to="/about" className="default-btn">
                     Read More
-                  </a>
+                  </Link>
                 </div>
                 <div className="estate-shape">
                   <img src={est} alt="estate" />

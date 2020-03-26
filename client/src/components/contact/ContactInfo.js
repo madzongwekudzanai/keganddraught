@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ContactInfo = () => {
   return (
@@ -23,17 +24,19 @@ const ContactInfo = () => {
                     <li>
                       <i className="fa fa-phone"></i>
                       <span>Phone</span>
-                      <a href="/">+25462755, 265497466</a>
+                      <Link to="/contact">+25462755, 265497466</Link>
                     </li>
                     <li>
                       <i className="fa fa-envelope"></i>
                       <span>Email</span>
-                      <a href="/">giano@gmail.com</a>
+                      <Link to="/contact">giano@gmail.com</Link>
                     </li>
                     <li>
                       <i className="fa fa-map-marker"></i>
                       <span>Address</span>
-                      <a href="/">25 Street, west Cruch, Newzeland</a>
+                      <Link to="/contact">
+                        25 Street, west Cruch, Newzeland
+                      </Link>
                     </li>
                   </ul>
                 </div>

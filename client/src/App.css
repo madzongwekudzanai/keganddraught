@@ -4468,18 +4468,6 @@ Sidebar Widget Area CSS
   background-position: center center !important;
 }
 
-.widget-area .widget_zovio_posts_thumb .item .thumb .fullimage.bg1 {
-  background-image: url(./components/layout/img/blog-details2.jpg);
-}
-
-.widget-area .widget_zovio_posts_thumb .item .thumb .fullimage.bg2 {
-  background-image: url(./components/layout/img/blog-details3.jpg);
-}
-
-.widget-area .widget_zovio_posts_thumb .item .thumb .fullimage.bg3 {
-  background-image: url(./components/layout/img/blog-details4.jpg);
-}
-
 .widget-area .widget_zovio_posts_thumb .item .thumb .fullimage.bg4 {
   background-image: url(./components/layout/img/blog-details5.jpg);
 }
@@ -5886,4 +5874,20 @@ Checkout Area Style
   display: block;
   text-align: center;
 }
-/*# sourceMappingURL=style.css.map */
+
+.trunk{
+  display: block !important;
+    display: -webkit-box !important;
+    max-width: 200px !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.comment-delete{
+  color: #fff !important;
+ background-color: #dc3545 !important;
+ border-color: #dc3545;
+ cursor: pointer;
+}

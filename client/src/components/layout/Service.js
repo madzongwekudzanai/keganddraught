@@ -1,5 +1,6 @@
 import React from "react";
 import serviceShape from "./coverimages/service-shape.png";
+import { Link } from "react-router-dom";
 
 const Service = () => {
   return (
@@ -17,9 +18,9 @@ const Service = () => {
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                 Eveniet illum aliquam eaque doloribus modi neque.
               </p>
-              <a href="/" className="read-more">
+              <Link to="/about" className="read-more">
                 Read More
-              </a>
+              </Link>
             </div>
           </div>
           <div className="col-lg-4 col-md-6">
@@ -33,9 +34,9 @@ const Service = () => {
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                 Eveniet illum aliquam eaque doloribus modi neque.
               </p>
-              <a href="/" className="read-more">
+              <Link to="/about" className="read-more">
                 Read More
-              </a>
+              </Link>
             </div>
           </div>
           <div className="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
@@ -49,9 +50,9 @@ const Service = () => {
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                 Eveniet illum aliquam eaque doloribus modi neque.
               </p>
-              <a href="/" className="read-more">
+              <Link to="/about" className="read-more">
                 Read More
-              </a>
+              </Link>
             </div>
           </div>
         </div>

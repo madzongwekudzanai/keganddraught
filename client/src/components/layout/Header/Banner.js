@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -11,9 +12,9 @@ const Banner = () => {
                 <div className="banner-video">
                   <div className="video-wrap">
                     <div className="video-btn-wrap">
-                      <a href="youtube.com" className="video-btn popup-youtube">
+                      <Link to="/" className="video-btn popup-youtube">
                         <i className="flaticon-play-button"></i>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -26,9 +27,9 @@ const Banner = () => {
                     Wine improves the age, the older it gets, the better you
                     like it.
                   </p>
-                  <a href="/" className="default-btn">
+                  <Link to="/about" className="default-btn">
                     Explore Now
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

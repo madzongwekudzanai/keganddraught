@@ -1,6 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { setAlert } from "../../actions/alert";
+import axios from "axios";
 
-const Contact = () => {
+const Contact = ({ setAlert }) => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+  const { firstName, lastName, email, subject, message } = formData;
+  const onChange = e => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const onSubmit = async e => {
+    e.preventDefault();
+    try {
+      await axios.post("/api/contact", {
+        firstName,
+        lastName,
+        email,
+        subject,
+        message
+      });
+      setAlert("Thank you, your email has been sent", "success", 10000);
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        subject: "",
+        message: ""
+      });
+    } catch (error) {
+      setAlert("Sorry, something went wrong", "danger");
+    }
+  };
   return (
     <section className="contact-area ptb-100">
       <div className="container">
@@ -12,14 +49,23 @@ const Contact = () => {
             </div>
           </div>
         </div>
-        <form id="contact-form">
+        <form
+          id="contact-form"
+          onSubmit={e => {
+            onSubmit(e);
+          }}
+        >
           <div className="row">
             <div className="col-lg-6 col-md-6">
               <div className="form-group">
                 <input
+                  onChange={e => {
+                    onChange(e);
+                  }}
+                  value={firstName}
                   type="text"
                   className="form-control"
-                  name="name"
+                  name="firstName"
                   id="name"
                   required
                   placeholder="Your First Name"
@@ -29,9 +75,13 @@ const Contact = () => {
             <div className="col-lg-6 col-md-6">
               <div className="form-group">
                 <input
+                  onChange={e => {
+                    onChange(e);
+                  }}
+                  value={lastName}
                   type="text"
                   className="form-control"
-                  name="name"
+                  name="lastName"
                   id="name-2"
                   required
                   placeholder="Your Last Name"
@@ -41,9 +91,13 @@ const Contact = () => {
             <div className="col-lg-6 col-md-6">
               <div className="form-group">
                 <input
+                  onChange={e => {
+                    onChange(e);
+                  }}
+                  value={email}
                   type="email"
                   className="form-control"
-                  name="name"
+                  name="email"
                   id="exampleInputEmail1"
                   required
                   placeholder="Your Email"
@@ -53,6 +107,10 @@ const Contact = () => {
             <div className="col-lg-6 col-md-6">
               <div className="form-group">
                 <input
+                  onChange={e => {
+                    onChange(e);
+                  }}
+                  value={subject}
                   type="text"
                   className="form-control"
                   name="subject"
@@ -66,6 +124,10 @@ const Contact = () => {
               <div className="form-group">
                 <textarea
                   name="message"
+                  value={message}
+                  onChange={e => {
+                    onChange(e);
+                  }}
                   className="form-control"
                   id="message"
                   rows="5"
@@ -86,4 +148,8 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+Contact.propTypes = {
+  setAlert: PropTypes.func.isRequired
+};
+
+export default connect(null, { setAlert })(Contact);

@@ -10,12 +10,12 @@ router.post("/", async (req, res) => {
           <p>You have a new contact request</p>
           <h3>Contact Details</h3>
           <ul>  
-            <li>Name: ${req.body.name}</li>
-            <li>Email: ${req.body.email}</li>
-            <li>Subject: ${req.body.phone}</li>
-            <li>Subject: ${req.body.subject}</li>
+            <li>firstName: ${req.body.firstName}</li>
+            <li>lastName: ${req.body.lastName}</li>
+            <li>email: ${req.body.email}</li>
+            <li>subject: ${req.body.subject}</li>
           </ul>
-          <h3>Message</h3>
+          <h3>message</h3>
           <p>${req.body.message}</p>
         `;
 

@@ -1,5 +1,6 @@
 import React from "react";
 import footerLogo from "./coverimages/footer-logo.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -8,7 +9,7 @@ const Footer = () => {
         <div className="row footer-wrapper">
           <div className="col-lg-4 col-sm-6 col-md-6">
             <div className="single-widget">
-              <a href="/" className="brand">
+              <a to="/" className="brand">
                 <img src={footerLogo} alt="footer-logo" />
               </a>
               <p>
@@ -23,16 +24,16 @@ const Footer = () => {
               <h3>My Accounts</h3>
               <ul>
                 <li>
-                  <a href="/">My account</a>
+                  <Link to="/">My account</Link>
                 </li>
                 <li>
-                  <a href="/">Register</a>
+                  <Link to="/">Register</Link>
                 </li>
                 <li>
-                  <a href="/">Log in</a>
+                  <Link to="/">Log in</Link>
                 </li>
                 <li>
-                  <a href="/">My Order</a>
+                  <Link to="/">My Order</Link>
                 </li>
               </ul>
             </div>
@@ -42,16 +43,16 @@ const Footer = () => {
               <h3>Quick Link</h3>
               <ul>
                 <li>
-                  <a href="/">New User</a>
+                  <Link to="/">New User</Link>
                 </li>
                 <li>
-                  <a href="/">Help Center</a>
+                  <Link to="/">Help Center</Link>
                 </li>
                 <li>
-                  <a href="/">Report Spam</a>
+                  <Link to="/">Report Spam</Link>
                 </li>
                 <li>
-                  <a href="/">FAQ</a>
+                  <Link to="/">FAQ</Link>
                 </li>
               </ul>
             </div>
@@ -66,11 +67,11 @@ const Footer = () => {
                 </li>
                 <li className="address">
                   <i className="fa fa-phone"></i>
-                  <a href="/">+25462755, 265497466</a>
+                  <Link to="/">+25462755, 265497466</Link>
                 </li>
                 <li className="address">
                   <i className="fa fa-envelope"></i>
-                  <a href="/">giano@gmail.com</a>
+                  <Link to="/">giano@gmail.com</Link>
                 </li>
               </ul>
             </div>
@@ -81,16 +82,28 @@ const Footer = () => {
         <div className="row">
           <div className="col-lg-6 col-md-6">
             <div>
-              <p>Copyright © Giano. All Rights Reserved</p>
+              <p>Copyright © Keg & Draught. All Rights Reserved</p>
             </div>
           </div>
           <div className="col-lg-6 col-md-6">
             <ul className="terms-conditions">
               <li>
-                <a href="/">Terms & Conditions</a>
+                <a
+                  target="_blank"
+                  rel="external nofollow noopener noreferrer"
+                  href="https://kudzanaimadzongwe.com"
+                >
+                  Website By
+                </a>
               </li>
               <li>
-                <a href="/">Privacy Policy</a>
+                <a
+                  target="_blank"
+                  rel="external nofollow noopener noreferrer"
+                  href="https://kudzanaimadzongwe.com"
+                >
+                  Madzongwe Kudzanai
+                </a>
               </li>
             </ul>
           </div>

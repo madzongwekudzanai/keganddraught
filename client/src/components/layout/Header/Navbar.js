@@ -18,21 +18,20 @@ const Navbar = ({ history, logout, auth: { isAuthenticated, loading } }) => {
       setActiveLink(`${location.pathname}`);
     });
     console.log(activeLink);
-  }, []);
+  }, [activeLink, history]);
   return (
     <div className="navbar-area fixed-top">
       <div className="mobile-nav mean-container">
         <div className="mean-bar">
-          <Link
+          <a
             onClick={toggleNavbar}
-            to="/"
             className="meanmenu-reveal"
             style={{ right: "0", left: "auto" }}
           >
             <span></span>
             <span></span>
             <span></span>
-          </Link>
+          </a>
           <nav className="mean-nav">
             <ul
               className="navbar-nav ml-auto"

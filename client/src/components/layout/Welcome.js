@@ -1,6 +1,7 @@
 import React from "react";
 import welcome from "./coverimages/welcome.png";
 import signature from "./coverimages/signature.png";
+import { Link } from "react-router-dom";
 
 const Welcome = () => {
   return (
@@ -58,19 +59,19 @@ const Welcome = () => {
                     <span>Follow Us</span>
                     <ul>
                       <li>
-                        <a href="#">
+                        <Link to="/contact">
                           <i className="fab fa-facebook-f"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="/contact">
                           <i className="fab fa-twitter"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="/contact">
                           <i className="fab fa-pinterest-p"></i>
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
