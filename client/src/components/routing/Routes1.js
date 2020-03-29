@@ -4,6 +4,7 @@ import About from "../about/About";
 import ContactUs from "../contact/ContactUs";
 import NotFound from "../layout/NotFound";
 import Blog from "../blog/Blog";
+import SearchResults from "../blog/SearchResults";
 import BlogDetail from "../blog/BlogDetail";
 import PageTitle from "../layout/PageTitle";
 
@@ -15,6 +16,7 @@ const Routes1 = () => {
         <Route exact component={About} path="/about" />
         <Route exact component={ContactUs} path="/contact" />
         <Route exact component={Blog} path="/blog" />
+        <Route exact component={SearchResults} path="/search" />
         <Route exact component={BlogDetail} path="/blog/:id" />
         <Route component={NotFound} />
       </Switch>

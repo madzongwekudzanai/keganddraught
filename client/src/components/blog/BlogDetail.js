@@ -4,6 +4,7 @@ import Spinner from "../layout/Spinner";
 import SingleLatest from "./SingleLatest";
 import SingleComment from "./SingleComment";
 import SingleBlogDetail from "./SingleBlogDetail";
+import SearchForm from "./SearchForm";
 import { getPost, getThreePost, addComment } from "../../actions/post";
 import { connect } from "react-redux";
 
@@ -119,21 +120,7 @@ const BlogDetail = ({
           </div>
           <div className="col-lg-4 col-md-12">
             <aside className="widget-area" id="secondary">
-              <div className="widget widget_search">
-                <form className="search-form">
-                  <label>
-                    <span className="screen-reader-text">Search for:</span>
-                    <input
-                      type="search"
-                      placeholder="Search..."
-                      className="search-field"
-                    />
-                  </label>
-                  <button type="submit">
-                    <i className="fa fa-search"></i>
-                  </button>
-                </form>
-              </div>
+              <SearchForm />
               <section className="widget widget_zovio_posts_thumb">
                 <h3 className="widget-title">Popular Posts</h3>
                 {threePosts.map(post => (

@@ -31,9 +31,10 @@ export const getPosts = () => async dispatch => {
 };
 
 // Search posts
-export const searchPosts = () => async dispatch => {
+export const searchPosts = content => async dispatch => {
   try {
-    const res = await axios.get("/api/posts/search");
+    const res = await axios.post("/api/posts/search", { content: content });
+    console.log("search");
     dispatch({
       type: GET_SEARCH_POSTS,
       payload: res.data
@@ -41,7 +42,7 @@ export const searchPosts = () => async dispatch => {
   } catch (err) {
     dispatch({
       type: POST_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: { msg: err.response.status, status: err.response.status }
     });
   }
 };
@@ -165,7 +166,7 @@ export const getPost = id => async dispatch => {
   } catch (err) {
     dispatch({
       type: POST_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: { msg: err.response, status: err.response }
     });
   }
 };

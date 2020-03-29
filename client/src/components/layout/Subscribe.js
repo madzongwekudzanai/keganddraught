@@ -1,6 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { setAlert } from "../../actions/alert";
+import { connect } from "react-redux";
+import axios from "axios";
 
-const Subscribe = () => {
+const Subscribe = ({ setAlert }) => {
+  const [email, setEmail] = useState("");
+  const onSubmit = async e => {
+    e.preventDefault();
+    try {
+      await axios.post("/api/contact/newsletter", {
+        email
+      });
+      setAlert("Thank you, your email has been sent", "success", 10000);
+      setEmail("");
+    } catch (error) {
+      setAlert("Sorry, something went wrong", "danger");
+    }
+  };
+  const onChange = e => {
+    setEmail(e.target.value);
+  };
   return (
     <div className="subscribe-area">
       <div className="container">
@@ -17,10 +37,13 @@ const Subscribe = () => {
         <div className="row">
           <div className="col-md-6 offset-md-3">
             <div className="widget subscribe">
-              <form className="search-form">
+              <form onSubmit={e => onSubmit(e)} className="search-form">
                 <label>
                   <input
-                    type="search"
+                    value={email}
+                    onChange={e => onChange(e)}
+                    required
+                    type="email"
                     className="search-field"
                     placeholder="Enter your email address"
                   />
@@ -39,4 +62,8 @@ const Subscribe = () => {
   );
 };
 
-export default Subscribe;
+Subscribe.propTypes = {
+  setAlert: PropTypes.func.isRequired
+};
+
+export default connect(null, { setAlert })(Subscribe);

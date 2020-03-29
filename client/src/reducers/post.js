@@ -15,7 +15,7 @@ import {
 const initialState = {
   posts: [],
   post: null,
-  searchPosts: [],
+  searchedPosts: [],
   fourPosts: [],
   threePosts: [],
   category: [],
@@ -36,7 +36,7 @@ export default function(state = initialState, action) {
     case GET_SEARCH_POSTS:
       return {
         ...state,
-        searchPosts: payload,
+        searchedPosts: payload,
         loading: false
       };
     case GET_POST:

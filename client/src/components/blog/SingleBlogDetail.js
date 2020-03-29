@@ -30,32 +30,29 @@ const SingleBlogDetail = ({
       </div>
       <div className="article-footer">
         <div className="article-tags">
-          <span>
-            <i className="fa fa-share"></i>
-          </span>
-          <a to="/">Share</a>
+          <a to="/">Follow</a>
         </div>
         <div className="article-share">
           <ul className="social">
             <li>
-              <a to="/">
+              <Link to="/contact">
                 <i className="fab fa-facebook-f"></i>
-              </a>
+              </Link>
             </li>
             <li>
-              <a to="/">
+              <Link to="/contact">
                 <i className="fab fa-twitter"></i>
-              </a>
+              </Link>
             </li>
             <li>
-              <a to="/">
+              <Link to="/contact">
                 <i className="fab fa-linkedin"></i>
-              </a>
+              </Link>
             </li>
             <li>
-              <a to="/">
+              <Link to="/contact">
                 <i className="fab fa-instagram"></i>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

@@ -44,4 +44,38 @@ router.post("/", async (req, res) => {
   });
 });
 
+router.post("/newsletter", async (req, res) => {
+  const output = `
+          <p>You have a new newsletter subscription</p>
+          <h3>Newsletter Subscription</h3>
+          <ul>  
+            <li>Email: ${req.body.email}</li>
+          </ul>
+        `;
+
+  let transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: email,
+      pass: password
+    }
+  });
+
+  let mailOptions = {
+    from: email,
+    to: "kudziemadzongwe6@gmail.com",
+    subject: "Newsletter Subscription",
+    html: output
+  };
+
+  transporter.sendMail(mailOptions, function(error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      res.json("Thank you, your email has been sent");
+      console.log("Email sent: " + info.response);
+    }
+  });
+});
+
 module.exports = router;
