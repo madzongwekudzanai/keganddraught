@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
-import gianoLogo from "../coverimages/giano-logo.png";
+import KandDLogo from "../coverimages/keganddraught.png";
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -128,21 +128,21 @@ const Navbar = ({ history, logout, auth: { isAuthenticated, loading } }) => {
               <li className="nav-item contact-number">
                 <Link to="/contact" className="nav-link">
                   <i className="fa fa-phone"></i>
-                  +254-789-417
+                  +263-775-923-028
                 </Link>
               </li>
             </ul>
           </nav>
         </div>
         <Link to="/" className="logo">
-          <img src={gianoLogo} alt="Keg & Draught Logo" />
+          <img src={KandDLogo} alt="Keg & Draught Logo" />
         </Link>
       </div>
       <div className="main-nav">
         <nav className="navbar navbar-expand-md navbar-light is-sticky">
           <div className="container">
             <Link to="/" className="navbar-brand">
-              <img src={gianoLogo} alt="Keg & Draught Logo" />
+              <img src={KandDLogo} alt="Keg & Draught Logo" />
             </Link>
             <div className="mean-push"></div>
             <div
@@ -244,7 +244,7 @@ const Navbar = ({ history, logout, auth: { isAuthenticated, loading } }) => {
                 <li className="nav-item contact-number">
                   <Link to="/contact" className="nav-link">
                     <i className="fa fa-phone"></i>
-                    +254-789-417
+                    +263-775-923-028
                   </Link>
                 </li>
               </ul>

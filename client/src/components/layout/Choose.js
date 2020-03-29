@@ -14,16 +14,18 @@ const Choose = () => {
           <div className="col-lg-8">
             <div className="single-choose-wrap">
               <h2>
-                “We thrive in making fine wines that enrich the taste & soul’’
+                “What were they thinking? 'It's an alien apocalypse! Quick, grab
+                the beer!’’
               </h2>
-              <span>Jon Maker</span>
+              <span>Rick Yancey</span>
               <div className="row">
                 <div className="col-lg-4 col-md-6 col-sm-6">
                   <div className="single-choose">
                     <span>1</span>
                     <h3>Harvesting</h3>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      It is the grapes which contain all the required
+                      ingredients.
                     </p>
                   </div>
                 </div>
@@ -32,7 +34,8 @@ const Choose = () => {
                     <span>2</span>
                     <h3>Relaxation</h3>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      It is the grapes which contain all the required
+                      ingredients.
                     </p>
                   </div>
                 </div>
@@ -41,7 +44,8 @@ const Choose = () => {
                     <span>3</span>
                     <h3>Foundation</h3>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      It is the grapes which contain all the required
+                      ingredients.
                     </p>
                   </div>
                 </div>

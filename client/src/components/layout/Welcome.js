@@ -16,22 +16,19 @@ const Welcome = () => {
           <div className="col-lg-6">
             <div className="welcome-text">
               <span>Welcome To</span>
-              <h2>Wine & Winary Collections</h2>
+              <h2>Keg & Draught</h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
-                ipsum suspendisse ultrices gravida. Risus commodo viverra
-                maecenas accumsan lacus vel facilisis.
+                Far far away, behind the word mountains, far from the countries
+                Vokalia and Consonantia, there live the blind texts. Separated
+                they live in Bookmarksgrove right at the coast of the Semantics,
+                a large language ocean.
               </p>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
-                ipsum suspendisse ultrices gravida. Risus commodo viverra
-                maecenas accumsan lacus vel facilisis.
+                Even the all-powerful Pointing has no control about the blind
+                texts it is an almost unorthographic life One day however a
+                small line of blind text by the name of Lorem Ipsum decided to
+                leave for the far World of Grammar.
               </p>
-              <div className="signature">
-                <img src={signature} alt="Signature" />
-              </div>
             </div>
           </div>
         </div>
@@ -43,7 +40,7 @@ const Welcome = () => {
                   <div className="contact-info">
                     <i className="fa fa-phone"></i>
                     <span>(Hot Line)</span>
-                    <h3>(00) 123 456 789</h3>
+                    <h3>+263 775 923 028</h3>
                   </div>
                 </div>
                 <div className="col-lg-4 col-sm-6 p-0">

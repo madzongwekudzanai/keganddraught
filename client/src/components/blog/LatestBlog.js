@@ -17,11 +17,12 @@ const LatestBlog = ({ getFourPost, post: { fourPosts, loading } }) => {
         <div className="row">
           <div className="section-title">
             <span>Vineyard</span>
-            <h2>Blog Wines</h2>
+            <h2>Blog Draught</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
-              ipsum suspendisse ultrices.
+              Whatever you do, do it well. Do it so well that when people see
+              you do it they will want to come back and see you do it again and
+              they will want to bring others and show them how well you do what
+              you do.
             </p>
           </div>
         </div>

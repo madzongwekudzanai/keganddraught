@@ -15,8 +15,9 @@ const Service = () => {
               </div>
               <h3>Free Shipping & Return</h3>
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Eveniet illum aliquam eaque doloribus modi neque.
+                A wonderful serenity has taken possession of my entire soul,
+                like these sweet mornings of spring which I enjoy with my whole
+                heart
               </p>
               <Link to="/about" className="read-more">
                 Read More
@@ -31,8 +32,9 @@ const Service = () => {
               </div>
               <h3>Money Back Guarantee</h3>
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Eveniet illum aliquam eaque doloribus modi neque.
+                A wonderful serenity has taken possession of my entire soul,
+                like these sweet mornings of spring which I enjoy with my whole
+                heart
               </p>
               <Link to="/about" className="read-more">
                 Read More
@@ -47,8 +49,9 @@ const Service = () => {
               </div>
               <h3>Online Support 24/7</h3>
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Eveniet illum aliquam eaque doloribus modi neque.
+                A wonderful serenity has taken possession of my entire soul,
+                like these sweet mornings of spring which I enjoy with my whole
+                heart
               </p>
               <Link to="/about" className="read-more">
                 Read More

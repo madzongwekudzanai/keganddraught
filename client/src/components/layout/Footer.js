@@ -13,9 +13,10 @@ const Footer = () => {
                 <img src={footerLogo} alt="footer-logo" />
               </a>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod incididunt labore et dolore magna aliqua. Quis ipsum
-                suspendisse ultrices.Risus commodo.
+                Whatever you do, do it well. Do it so well that when people see
+                you do it they will want to come back and see you do it again
+                and they will want to bring others and show them how well you do
+                what you do.
               </p>
             </div>
           </div>
@@ -24,16 +25,16 @@ const Footer = () => {
               <h3>My Accounts</h3>
               <ul>
                 <li>
-                  <Link to="/">My account</Link>
+                  <Link to="/register">My account</Link>
                 </li>
                 <li>
-                  <Link to="/">Register</Link>
+                  <Link to="/register">Register</Link>
                 </li>
                 <li>
-                  <Link to="/">Log in</Link>
+                  <Link to="/login">Log in</Link>
                 </li>
                 <li>
-                  <Link to="/">My Order</Link>
+                  <Link to="/reset">Forgot Password</Link>
                 </li>
               </ul>
             </div>
@@ -43,16 +44,16 @@ const Footer = () => {
               <h3>Quick Link</h3>
               <ul>
                 <li>
-                  <Link to="/">New User</Link>
+                  <Link to="/register">New User</Link>
                 </li>
                 <li>
-                  <Link to="/">Help Center</Link>
+                  <Link to="/about">About Us</Link>
                 </li>
                 <li>
-                  <Link to="/">Report Spam</Link>
+                  <Link to="/contacts">Contact</Link>
                 </li>
                 <li>
-                  <Link to="/">FAQ</Link>
+                  <Link to="/blog">News & Updates</Link>
                 </li>
               </ul>
             </div>
@@ -63,15 +64,15 @@ const Footer = () => {
               <ul>
                 <li className="address">
                   <i className="fa fa-map-marker"></i>
-                  25 Street, west Cruch, Newzeland
+                  Crn 8th and 9th Ave, Avenues, Harare
                 </li>
                 <li className="address">
                   <i className="fa fa-phone"></i>
-                  <Link to="/">+25462755, 265497466</Link>
+                  <Link to="/">+263775923028, 0775923028</Link>
                 </li>
                 <li className="address">
                   <i className="fa fa-envelope"></i>
-                  <Link to="/">giano@gmail.com</Link>
+                  <Link to="/">stevenmunetsi@gmail.com</Link>
                 </li>
               </ul>
             </div>

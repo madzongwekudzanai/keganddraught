@@ -21,11 +21,11 @@ const Banner = () => {
               </div>
               <div className="col-lg-6">
                 <div className="banner-text">
-                  <span>Delightful</span>
-                  <h1>Dinner Emotions</h1>
+                  <span>Portable</span>
+                  <h1>Draught Units</h1>
                   <p>
-                    Wine improves the age, the older it gets, the better you
-                    like it.
+                    Portable, affordable, easy to operate, unlimited beer
+                    selection and cold beer instantly.
                   </p>
                   <Link to="/about" className="default-btn">
                     Explore Now

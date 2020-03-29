@@ -12,13 +12,13 @@ const Pricing = () => {
             <div className="col-lg-6 pr-0">
               <div className="estate-wrapper">
                 <div className="estate-text">
-                  <span>The Estate</span>
-                  <h2>Weedding & Private Events</h2>
+                  <span>Event hosting</span>
+                  <h2>Venue & Private Events</h2>
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Aliquam labore ducimus cumque maiores, tenetur sint.
-                    Voluptates deleniti illum a esse maxime reprehenderit at.
-                    Placeat quaerat, exercitationem facere.
+                    Desire is the key to motivation, but it’s determination and
+                    commitment to an unrelenting pursuit of your goal -- a
+                    commitment to excellence -- that will enable you to attain
+                    the success you seek.
                   </p>
                 </div>
                 <div className="row">

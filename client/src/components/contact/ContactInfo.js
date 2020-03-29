@@ -24,18 +24,18 @@ const ContactInfo = () => {
                     <li>
                       <i className="fa fa-phone"></i>
                       <span>Phone</span>
-                      <Link to="/contact">+25462755, 265497466</Link>
+                      <Link to="/contact">+263775923028, 0775923028</Link>
                     </li>
                     <li>
                       <i className="fa fa-envelope"></i>
                       <span>Email</span>
-                      <Link to="/contact">giano@gmail.com</Link>
+                      <Link to="/contact">stevenmunetsi@gmail.com</Link>
                     </li>
                     <li>
                       <i className="fa fa-map-marker"></i>
                       <span>Address</span>
                       <Link to="/contact">
-                        25 Street, west Cruch, Newzeland
+                        Crn 8th and 9th Ave, Avenues, Harare
                       </Link>
                     </li>
                   </ul>
