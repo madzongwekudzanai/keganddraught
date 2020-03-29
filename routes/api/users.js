@@ -3,9 +3,8 @@ const router = express.Router();
 const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const config = require("config");
-const myEmail = config.get("email");
-const myPassword = config.get("password");
+const myEmail = process.env.EMAIL;
+const myPassword = process.env.PASSWORD;
 const nodemailer = require("nodemailer");
 const User = require("../../models/User");
 const Admin = require("../../models/Admin");
@@ -51,7 +50,7 @@ router.post("/", async (req, res) => {
 
     jwt.sign(
       payload,
-      config.get("jwtSecret"),
+      process.env.JWT_SECRET,
       { expiresIn: 360000 },
       (err, token) => {
         if (err) throw err;
@@ -137,7 +136,7 @@ router.post("/admin", async (req, res) => {
 
     jwt.sign(
       payload,
-      config.get("jwtSecret"),
+      process.env.JWT_SECRET,
       { expiresIn: 360000 },
       (err, token) => {
         if (err) throw err;

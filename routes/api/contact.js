@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const nodemailer = require("nodemailer");
-const config = require("config");
-const email = config.get("email");
-const password = config.get("password");
+const myEmail = process.env.EMAIL;
+const myPassword = process.env.PASSWORD;
 
 router.post("/", async (req, res) => {
   const output = `
@@ -22,13 +21,16 @@ router.post("/", async (req, res) => {
   let transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: email,
-      pass: password
+      user: myEmail,
+      pass: myPassword
+    },
+    tls: {
+      rejectUnauthorized: false
     }
   });
 
   let mailOptions = {
-    from: email,
+    from: myEmail,
     to: "kudziemadzongwe6@gmail.com",
     subject: "Contact request",
     html: output
@@ -56,13 +58,16 @@ router.post("/newsletter", async (req, res) => {
   let transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: email,
-      pass: password
+      user: myEmail,
+      pass: myPassword
+    },
+    tls: {
+      rejectUnauthorized: false
     }
   });
 
   let mailOptions = {
-    from: email,
+    from: myEmail,
     to: "kudziemadzongwe6@gmail.com",
     subject: "Newsletter Subscription",
     html: output

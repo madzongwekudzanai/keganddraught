@@ -6,6 +6,7 @@ import NotFound from "../layout/NotFound";
 import Blog from "../blog/Blog";
 import SearchResults from "../blog/SearchResults";
 import BlogDetail from "../blog/BlogDetail";
+import Success from "../layout/Success";
 import PageTitle from "../layout/PageTitle";
 
 const Routes1 = () => {
@@ -18,6 +19,7 @@ const Routes1 = () => {
         <Route exact component={Blog} path="/blog" />
         <Route exact component={SearchResults} path="/search" />
         <Route exact component={BlogDetail} path="/blog/:id" />
+        <Route exact component={Success} path="/auth/:token" />
         <Route component={NotFound} />
       </Switch>
     </Fragment>
