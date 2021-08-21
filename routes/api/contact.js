@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
-const config = require('config');
-const myEmail = config.get('email');
-const myPassword = config.get('password');
+const myEmail = process.env.EMAIL;
+const myPassword = process.env.PASSWORD;
 
 router.post('/', async (req, res) => {
 	const output = `

@@ -4,10 +4,9 @@ const auth = require('../../middleware/auth');
 const adminAuth = require('../../middleware/adminAuth');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const config = require('config');
-const myEmail = config.get('email');
-const myPassword = config.get('password');
-const jwtSecret = config.get('jwtSecret');
+const myEmail = process.env.EMAIL;
+const myPassword = process.env.PASSWORD;
+const jwtSecret = process.env.JWT_SECRET;
 const nodemailer = require('nodemailer');
 
 const User = require('../../models/User');
@@ -134,7 +133,7 @@ router.post('/forgot', async (req, res) => {
           <h1>Hie ${user.name},</h1>
           <h2>Password reset</h2>
           <p>Please click the link below to reset your password<p/>
-          <a href="http://localhost:3000/auth/${token}">reset password</>
+          <a href="https://keganddraught.herokuapp.com/auth/${token}">reset password</>
         `;
 
 			let transporter = nodemailer.createTransport({
@@ -196,7 +195,7 @@ router.post('/admin/forgot', async (req, res) => {
           <h1>Hie ${user.name},</h1>
           <h2>Password reset</h2>
           <p>Please click the link below to reset your password<p/>
-          <a href="http://localhost:3000/admin/forgot/${token}">reset password</>
+          <a href="https://keganddraught.herokuapp.com/admin/forgot/${token}">reset password</>
         `;
 
 			let transporter = nodemailer.createTransport({

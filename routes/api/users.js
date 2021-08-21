@@ -3,10 +3,9 @@ const router = express.Router();
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const config = require('config');
-const myEmail = config.get('email');
-const myPassword = config.get('password');
-const jwtSecret = config.get('jwtSecret');
+const myEmail = process.env.EMAIL;
+const myPassword = process.env.PASSWORD;
+const jwtSecret = process.env.JWT_SECRET;
 const nodemailer = require('nodemailer');
 const User = require('../../models/User');
 const Admin = require('../../models/Admin');
@@ -56,7 +55,7 @@ router.post('/', async (req, res) => {
           <h1>Welcome ${name},</h1>
           <h2>Welcome to Keg & Draught</h2>
           <p>Please click the link below to complete your registration<p/>
-          <a href="http://localhost:3000/auth/${token}">verify email</>
+          <a href="https://keganddraught.herokuapp.com/auth/${token}">verify email</>
         `;
 
 			let transporter = nodemailer.createTransport({
@@ -138,7 +137,7 @@ router.post('/admin', async (req, res) => {
           <h1>Hie ${name},</h1>
           <h2>Welcome to Keg & Draught</h2>
           <p>Please click the link below to complete your admin registration<p/>
-          <a href="http://localhost:3000/admin/${token}">verify email</>
+          <a href="https://keganddraught.herokuapp.com/admin/${token}">verify email</>
         `;
 
 			let transporter = nodemailer.createTransport({
