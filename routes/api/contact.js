@@ -1,11 +1,12 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const nodemailer = require("nodemailer");
-const myEmail = process.env.EMAIL;
-const myPassword = process.env.PASSWORD;
+const nodemailer = require('nodemailer');
+const config = require('config');
+const myEmail = config.get('email');
+const myPassword = config.get('password');
 
-router.post("/", async (req, res) => {
-  const output = `
+router.post('/', async (req, res) => {
+	const output = `
           <p>You have a new contact request</p>
           <h3>Contact Details</h3>
           <ul>  
@@ -18,36 +19,36 @@ router.post("/", async (req, res) => {
           <p>${req.body.message}</p>
         `;
 
-  let transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: myEmail,
-      pass: myPassword
-    },
-    tls: {
-      rejectUnauthorized: false
-    }
-  });
+	let transporter = nodemailer.createTransport({
+		service: 'gmail',
+		auth: {
+			user: myEmail,
+			pass: myPassword,
+		},
+		tls: {
+			rejectUnauthorized: false,
+		},
+	});
 
-  let mailOptions = {
-    from: myEmail,
-    to: "kudziemadzongwe6@gmail.com",
-    subject: "Contact request",
-    html: output
-  };
+	let mailOptions = {
+		from: myEmail,
+		to: 'kudziemadzongwe6@gmail.com',
+		subject: 'Contact request',
+		html: output,
+	};
 
-  transporter.sendMail(mailOptions, function(error, info) {
-    if (error) {
-      console.log(error);
-    } else {
-      res.json("Thank you, your email has been sent");
-      console.log("Email sent: " + info.response);
-    }
-  });
+	transporter.sendMail(mailOptions, function (error, info) {
+		if (error) {
+			console.log(error);
+		} else {
+			res.json('Thank you, your email has been sent');
+			console.log('Email sent: ' + info.response);
+		}
+	});
 });
 
-router.post("/newsletter", async (req, res) => {
-  const output = `
+router.post('/newsletter', async (req, res) => {
+	const output = `
           <p>You have a new newsletter subscription</p>
           <h3>Newsletter Subscription</h3>
           <ul>  
@@ -55,32 +56,32 @@ router.post("/newsletter", async (req, res) => {
           </ul>
         `;
 
-  let transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: myEmail,
-      pass: myPassword
-    },
-    tls: {
-      rejectUnauthorized: false
-    }
-  });
+	let transporter = nodemailer.createTransport({
+		service: 'gmail',
+		auth: {
+			user: myEmail,
+			pass: myPassword,
+		},
+		tls: {
+			rejectUnauthorized: false,
+		},
+	});
 
-  let mailOptions = {
-    from: myEmail,
-    to: "kudziemadzongwe6@gmail.com",
-    subject: "Newsletter Subscription",
-    html: output
-  };
+	let mailOptions = {
+		from: myEmail,
+		to: 'kudziemadzongwe6@gmail.com',
+		subject: 'Newsletter Subscription',
+		html: output,
+	};
 
-  transporter.sendMail(mailOptions, function(error, info) {
-    if (error) {
-      console.log(error);
-    } else {
-      res.json("Thank you, your email has been sent");
-      console.log("Email sent: " + info.response);
-    }
-  });
+	transporter.sendMail(mailOptions, function (error, info) {
+		if (error) {
+			console.log(error);
+		} else {
+			res.json('Thank you, your email has been sent');
+			console.log('Email sent: ' + info.response);
+		}
+	});
 });
 
 module.exports = router;
